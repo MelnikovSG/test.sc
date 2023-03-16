@@ -38,6 +38,8 @@ public class MyController {
 
     @RequestMapping("/more-info")
     public String showMoreInfo(@RequestParam("empId") int id, Model model){
-        return "add-New-Service";
+        Services services = servicesService.getServicesById(id);
+        model.addAttribute("services",services);
+        return "show-more-info";
     }
 }
