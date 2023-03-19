@@ -1,15 +1,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <body>
-<h2>All services</h2>
+<h2>Список всех оказанных услуг</h2>
 <br>
 <table>
     <tr>
-        <th>Date:</th>
-        <th>Application number:</th>
-        <th>Service name:</th>
-        <th>Operations</th>
+        <th>Дата создания:</th>
+        <th>Номер:</th>
+        <th>Наименование услуги:</th>
+        <th>Операции:</th>
     </tr>
     <c:forEach var="emp" items="${allServices}">
         <c:url var="moreButton" value="/more-info">
@@ -21,12 +22,12 @@
             <td>${emp.id}</td>
             <td>${emp.serviceName}</td>
             <td>
-                <input type="button" value="More" onclick="window.location.href = '${moreButton}'">
+                <input type="button" value="Подробно" onclick="window.location.href = '${moreButton}'">
             </td>
         </tr>
     </c:forEach>
 </table>
 <br>
-<button type="button" onclick="window.location.href='http://localhost:8081/test_sc/'">Add service</button>
+<button type="button" onclick="window.location.href='http://localhost:8081/test_sc/'">Получить услугу</button>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package com.test.sc.entity;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "services")
@@ -14,13 +16,18 @@ public class Services {
     private String createdDate;
     @Column(name = "service_name")
     private String serviceName;
+    @Pattern(regexp="^[а-яА-ЯёЁ]+$", message="ФИО должно содержать только кириллические буквы")
     @Column(name = "firstname")
     private String firstName;
+    @Pattern(regexp="^[а-яА-ЯёЁ]+$", message="ФИО должно содержать только кириллические буквы")
     @Column(name = "lastname")
     private String lastName;
+    @Pattern(regexp="^[а-яА-ЯёЁ]+$", message="ФИО должно содержать только кириллические буквы")
     @Column(name = "surname")
     private String surName;
     @Column(name = "email")
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            message = "используйте адрес электронной почты")
     private String eMail;
 
     public Services() {

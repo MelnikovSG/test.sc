@@ -1,29 +1,44 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <script>
-        function showAlert() {
-            alert("The service has been successfully provided!");
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<%--    <script>--%>
+<%--        function showAlert() {--%>
+<%--            alert("Услуга была успешно предоставлена!");--%>
+<%--        }--onsubmit="showAlert()"%>
+<%--    </script>--%>
+    <style>
+        .error {
+            color: red;
         }
-    </script>
+    </style>
 </head>
 <body>
-<h2>Services info</h2>
+<h2>Форма оказания услуги</h2>
 <br>
-<form:form action="saveService" modelAttribute="services" onsubmit="showAlert()">
-    Firstname <form:input path="firstName"/>
+<form:form action="saveService" modelAttribute="services"  accept-charset="UTF-8">
+    Имя <form:input path="firstName"/>
+    <form:errors path="firstName" cssClass="error"/>
     <br><br>
-    Lastname <form:input path="lastName"/>
+    Фамилия <form:input path="lastName"/>
+    <form:errors path="lastName" cssClass="error"/>
     <br><br>
-    Surname <form:input path="surName"/>
+    Отчество <form:input path="surName"/>
+    <form:errors path="surName" cssClass="error"/>
     <br><br>
-    Service name <form:input path="serviceName"/>
+    Наименование услуги <form:select path="serviceName">
+    <form:option value="Выдача охотничьего билета" label="Выдача охотничьего билета"/>
+    <form:option value="Запись ребенка в первый класс" label="Запись ребенка в первый класс"/>
+</form:select>
     <br><br>
-    Email <form:input path="eMail"/>
+    e-mail <form:input path="eMail"/>
+    <form:errors path="eMail" cssClass="error"/>
     <br><br>
-    <input type="submit" value="Send">
+    <input type="submit" value="Отправить">
 </form:form>
-<button type="button" onclick="window.location.href='http://localhost:8081/test_sc/All-Services'">Cancel</button>
+<br>
+<button type="button" onclick="window.location.href='http://localhost:8081/test_sc/All-Services'">Отмена</button>
 </body>
 </html>

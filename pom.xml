@@ -8,7 +8,6 @@
     <name>test.sc Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <properties>
-<!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
@@ -55,6 +54,19 @@
             <artifactId>spring-orm</artifactId>
             <version>5.2.9.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse</groupId>
+            <artifactId>yasson</artifactId>
+            <version>1.0.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.1.0.Final</version>
+        </dependency>
+
+
     </dependencies>
     <build>
         <finalName>test.sc</finalName>
