@@ -1,14 +1,25 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<%--    <script>--%>
-<%--        function showAlert() {--%>
-<%--            alert("Услуга была успешно предоставлена!");--%>
-<%--        }--onsubmit="showAlert()"%>
-<%--    </script>--%>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script>
+        function showAlert(message) {
+            alert(message);
+        }
+
+        function handleSubmit() {
+            var isServiceSaved = '${services.serviceSaved}';
+
+            if (isServiceSaved === 'true') {
+                showAlert('Услуга была успешно предоставлена!');
+            } else {
+                showAlert('Услуга не была оказана, попробуйте позднее.');
+                return false;
+            }
+        }
+    </script>
     <style>
         .error {
             color: red;
@@ -18,7 +29,7 @@
 <body>
 <h2>Форма оказания услуги</h2>
 <br>
-<form:form action="saveService" modelAttribute="services"  accept-charset="UTF-8">
+<form:form action="saveService" modelAttribute="services" accept-charset="UTF-8" onsubmit="return handleSubmit()">
     Имя <form:input path="firstName"/>
     <form:errors path="firstName" cssClass="error"/>
     <br><br>

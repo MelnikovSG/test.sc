@@ -16,21 +16,24 @@ public class Services {
     private String createdDate;
     @Column(name = "service_name")
     private String serviceName;
-    @Pattern(regexp="^[а-яА-ЯёЁ]+$", message="ФИО должно содержать только кириллические буквы")
+    @Pattern(regexp = "^[а-яА-ЯёЁ]+$", message = "ФИО должно содержать только кириллические буквы")
     @Column(name = "firstname")
     private String firstName;
-    @Pattern(regexp="^[а-яА-ЯёЁ]+$", message="ФИО должно содержать только кириллические буквы")
+    @Pattern(regexp = "^[а-яА-ЯёЁ]+$", message = "ФИО должно содержать только кириллические буквы")
     @Column(name = "lastname")
     private String lastName;
-    @Pattern(regexp="^[а-яА-ЯёЁ]+$", message="ФИО должно содержать только кириллические буквы")
+    @Pattern(regexp = "^[а-яА-ЯёЁ]+$", message = "ФИО должно содержать только кириллические буквы")
     @Column(name = "surname")
     private String surName;
     @Column(name = "email")
     @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
             message = "используйте адрес электронной почты")
     private String eMail;
+    @Transient
+    private boolean serviceSaved;
 
     public Services() {
+        serviceSaved = true;
     }
 
     public Services(int id, String createdDate,
@@ -43,6 +46,7 @@ public class Services {
         this.lastName = lastName;
         this.surName = surName;
         this.eMail = eMail;
+        serviceSaved = true;
     }
 
     public int getId() {
@@ -99,5 +103,13 @@ public class Services {
 
     public void seteMail(String eMail) {
         this.eMail = eMail;
+    }
+
+    public boolean isServiceSaved() {
+        return serviceSaved;
+    }
+
+    public void setServiceSaved(boolean serviceSaved) {
+        this.serviceSaved = serviceSaved;
     }
 }
