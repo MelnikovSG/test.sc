@@ -28,8 +28,8 @@
           destroy-method="close">
         <property name="driverClass" value="org.postgresql.Driver"/>
         <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/my_db?useUnicode=true&amp;characterEncoding=utf8"/>
-        <property name="user" value="postgres"/>
-        <property name="password" value="12345"/>
+        <property name="user" value="************"/>
+        <property name="password" value="**********"/>
 
     </bean>
 
