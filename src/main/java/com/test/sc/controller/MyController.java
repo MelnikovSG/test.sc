@@ -1,6 +1,6 @@
 package com.test.sc.controller;
 
-import com.test.sc.dao.ServiceDAO;
+import com.test.sc.assistants.SendEmail;
 import com.test.sc.entity.Services;
 import com.test.sc.service.ServicesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,35 +18,41 @@ import java.util.List;
 public class MyController {
     @Autowired
     private ServicesService servicesService;
+
+    private final SendEmail sendEmail = new SendEmail();
+
     @RequestMapping("/All-Services")
-    public String showAllServices(Model model){
+    public String showAllServices(Model model) {
         List<Services> allServices = servicesService.getAllServices();
-        model.addAttribute("allServices",allServices);
+        model.addAttribute("allServices", allServices);
         return "show-All-Services";
     }
 
     @RequestMapping("/")
-    public String addNewService(Model model){
+    public String addNewService(Model model) {
         Services services = new Services();
-        model.addAttribute("services",services);
+        model.addAttribute("services", services);
         return "add-New-Service";
     }
 
     @RequestMapping("/saveService")
     public String saveService(@Valid @ModelAttribute("services") Services services,
-                              BindingResult bindingResult, Model model){
-        if(bindingResult.hasErrors()){
+                              BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
             return "add-New-Service";
-        }else{
+        } else {
             servicesService.saveServices(services);
+            SendEmail.sendEmail(services.geteMail(), services.getFirstName(), services.getLastName(),
+                            services.getSurName(), services.getServiceName(),
+                            services.getCreatedDate(), services.getId());
             return "redirect:/All-Services";
         }
     }
 
     @RequestMapping("/more-info")
-    public String showMoreInfo(@RequestParam("empId") int id, Model model){
+    public String showMoreInfo(@RequestParam("empId") int id, Model model) {
         Services services = servicesService.getServicesById(id);
-        model.addAttribute("services",services);
+        model.addAttribute("services", services);
         return "show-more-info";
     }
 }
