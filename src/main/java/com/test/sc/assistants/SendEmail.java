@@ -22,13 +22,13 @@ public class SendEmail {
         Session session = Session.getDefaultInstance(prop, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("MelnikovSG1@yandex.ru", "kcpgarbmdqhcaqnd");
+                return new PasswordAuthentication("*************", "***************");
             }
         });
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("MelnikovSG1@yandex.ru"));
+            message.setFrom(new InternetAddress("**************"));
             InternetAddress[] address = {new InternetAddress(to)};
             message.setRecipients(Message.RecipientType.TO, address);
             message.setSubject(createEmail.createSubject());
