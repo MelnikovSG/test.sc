@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -51,5 +52,12 @@
 </form:form>
 <br>
 <button type="button" onclick="window.location.href='http://localhost:8081/test_sc/All-Services'">Отмена</button>
+<br><br>
+<button type="button" onclick="window.location.href='${pageContext.request.contextPath}/logout'">Выход</button>
+
+<security:authorize access="hasRole('ADMIN')">
+    <button onclick="location.href='${pageContext.request.contextPath}/admin'" type="button">Админка</button>
+</security:authorize>
+
 </body>
 </html>

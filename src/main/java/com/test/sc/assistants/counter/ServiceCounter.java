@@ -1,4 +1,4 @@
-package com.test.sc.assistants;
+package com.test.sc.assistants.counter;
 
 public class ServiceCounter {
     private static final int MAX_SERVICES = 10000;

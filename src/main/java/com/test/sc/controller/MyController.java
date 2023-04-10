@@ -1,9 +1,10 @@
 package com.test.sc.controller;
 
-import com.test.sc.assistants.SendEmail;
+import com.test.sc.assistants.mail.SendEmail;
 import com.test.sc.entity.Services;
 import com.test.sc.service.ServicesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +20,6 @@ public class MyController {
     @Autowired
     private ServicesService servicesService;
 
-    private final SendEmail sendEmail = new SendEmail();
 
     @RequestMapping("/All-Services")
     public String showAllServices(Model model) {
@@ -29,11 +29,18 @@ public class MyController {
     }
 
     @RequestMapping("/")
+    @PreAuthorize("hasRole('USER')")
     public String addNewService(Model model) {
         Services services = new Services();
         model.addAttribute("services", services);
         return "add-New-Service";
     }
+    @RequestMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String adminHome(Model model) {
+        return "admin-home";
+    }
+
 
     @RequestMapping("/saveService")
     public String saveService(@Valid @ModelAttribute("services") Services services,

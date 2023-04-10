@@ -1,7 +1,7 @@
 package com.test.sc.dao;
 
-import com.test.sc.assistants.CreateDate;
-import com.test.sc.assistants.ServiceCounter;
+import com.test.sc.assistants.date.CreateDate;
+import com.test.sc.assistants.counter.ServiceCounter;
 import com.test.sc.entity.Services;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -40,7 +40,6 @@ public class ServiceDAOImpl implements ServiceDAO {
     @Override
     public Services getServicesById(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Services services = session.get(Services.class, id);
-        return services;
+        return session.get(Services.class, id);
     }
 }

@@ -1,4 +1,4 @@
-package com.test.sc.assistants;
+package com.test.sc.assistants.mail;
 
 public class CreateEmail {
 

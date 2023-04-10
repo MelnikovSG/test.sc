@@ -1,0 +1,4 @@
+MAIL_USER=MelnikovSG1@yandex.ru
+MAIL_PASS=kcpgarbmdqhcaqnd
+MAIL_HOST=smtp.yandex.ru
+MAIL_PORT=465
